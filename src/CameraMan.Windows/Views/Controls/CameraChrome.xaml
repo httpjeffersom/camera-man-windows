@@ -1,0 +1,32 @@
+<UserControl x:Class="CameraMan.Windows.Views.Controls.CameraChrome"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:CameraMan.Windows.Views.Controls"
+             xmlns:media="clr-namespace:System.Windows.Media;assembly=PresentationCore"
+             Focusable="False"
+             Background="Transparent"
+             SnapsToDevicePixels="True">
+  <Grid x:Name="ChromeRoot" Background="Transparent">
+    <!-- Border and shadow strokes are centred on the contour, so part of them (and the whole
+         blurred shadow) falls outside the chrome. A Canvas reports no desired size and never clips
+         its children, which keeps that overflow from being cut by WPF's layout clip. -->
+    <Canvas x:Name="ShadowLayer" IsHitTestVisible="False">
+      <Path x:Name="ShadowPath"
+            IsHitTestVisible="False"
+            StrokeLineJoin="Round"
+            StrokeStartLineCap="Round"
+            StrokeEndLineCap="Round" />
+    </Canvas>
+    <controls:CameraShapeSurface x:Name="Surface"
+                                 IsHitTestVisible="False"
+                                 RenderOptions.BitmapScalingMode="HighQuality" />
+    <Canvas x:Name="BorderLayer" IsHitTestVisible="False">
+      <Path x:Name="BorderPath"
+            IsHitTestVisible="False"
+            Fill="Transparent"
+            StrokeLineJoin="Round"
+            StrokeStartLineCap="Round"
+            StrokeEndLineCap="Round" />
+    </Canvas>
+  </Grid>
+</UserControl>

@@ -1,0 +1,109 @@
+<UserControl x:Class="CameraMan.Windows.Views.Settings.BorderSettingsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:CameraMan.Windows.Views.Controls"
+             xmlns:settings="clr-namespace:CameraMan.Windows.Views.Settings"
+             xmlns:loc="clr-namespace:CameraMan.Windows.Resources">
+  <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+    <controls:SettingsPageFrame>
+    <StackPanel>
+      <TextBlock Text="{loc:Loc Page_Border}" Style="{StaticResource PageTitle}" />
+      <TextBlock Text="{loc:Loc Border_Subtitle}" Style="{StaticResource PageSubtitle}" Margin="0,4,0,16" />
+
+      <controls:SettingsCard Header="{loc:Loc Border_Group}">
+        <StackPanel>
+          <controls:SettingsRow Title="{loc:Loc Border_Show}"
+                                Icon="&#xE7C4;"
+                                IconBrush="{DynamicResource AccentBorder}">
+            <CheckBox Style="{StaticResource ToggleSwitch}"
+                      IsChecked="{Binding ShowBorder, Mode=TwoWay}" />
+          </controls:SettingsRow>
+
+          <Border Style="{StaticResource Divider}"
+                  Visibility="{Binding ShowBorder, Converter={StaticResource BoolToVisibility}}" />
+          <settings:SettingsSliderRow Title="{loc:Loc Border_Width}"
+                                      Icon="&#xE8A1;"
+                                      IconBrush="{DynamicResource AccentBorder}"
+                                      Minimum="0"
+                                      Maximum="20"
+                                      Step="1"
+                                      Format="Points"
+                                      Visibility="{Binding ShowBorder, Converter={StaticResource BoolToVisibility}}"
+                                      Value="{Binding BorderWidth, Mode=TwoWay}" />
+
+          <Border Style="{StaticResource Divider}"
+                  Visibility="{Binding ShowBorder, Converter={StaticResource BoolToVisibility}}" />
+          <controls:SettingsRow Title="{loc:Loc Border_Gradient}"
+                                Subtitle="{loc:Loc Border_Gradient_Desc}"
+                                Icon="&#xE790;"
+                                IconBrush="{DynamicResource AccentBorder}"
+                                Visibility="{Binding ShowBorder, Converter={StaticResource BoolToVisibility}}">
+            <CheckBox Style="{StaticResource ToggleSwitch}"
+                      IsChecked="{Binding BorderUseGradient, Mode=TwoWay}" />
+          </controls:SettingsRow>
+
+          <Border Style="{StaticResource Divider}"
+                  Visibility="{Binding ShowBorderGradientOptions, Converter={StaticResource BoolToVisibility}}" />
+          <controls:SettingsRow Title="{loc:Loc Border_StartColor}"
+                                Icon="&#xE790;"
+                                IconBrush="{DynamicResource AccentBorder}"
+                                Visibility="{Binding ShowBorderGradientOptions, Converter={StaticResource BoolToVisibility}}">
+            <controls:ColorPickerButton SelectedColor="{Binding BorderGradientStartColor, Mode=TwoWay}" />
+          </controls:SettingsRow>
+
+          <Border Style="{StaticResource Divider}"
+                  Visibility="{Binding ShowBorderGradientOptions, Converter={StaticResource BoolToVisibility}}" />
+          <controls:SettingsRow Title="{loc:Loc Border_EndColor}"
+                                Icon="&#xE790;"
+                                IconBrush="{DynamicResource AccentBorder}"
+                                Visibility="{Binding ShowBorderGradientOptions, Converter={StaticResource BoolToVisibility}}">
+            <controls:ColorPickerButton SelectedColor="{Binding BorderGradientEndColor, Mode=TwoWay}" />
+          </controls:SettingsRow>
+
+          <Border Style="{StaticResource Divider}"
+                  Visibility="{Binding ShowBorderSolidColor, Converter={StaticResource BoolToVisibility}}" />
+          <controls:SettingsRow Title="{loc:Loc Border_Color}"
+                                Icon="&#xE790;"
+                                IconBrush="{DynamicResource AccentBorder}"
+                                Visibility="{Binding ShowBorderSolidColor, Converter={StaticResource BoolToVisibility}}">
+            <controls:ColorPickerButton SelectedColor="{Binding BorderColor, Mode=TwoWay}" />
+          </controls:SettingsRow>
+        </StackPanel>
+      </controls:SettingsCard>
+
+      <controls:SettingsCard Header="{loc:Loc Shadow_Group}" Margin="0,16,0,0">
+        <StackPanel>
+          <controls:SettingsRow Title="{loc:Loc Shadow_Show}"
+                                Subtitle="{loc:Loc Shadow_Show_Desc}"
+                                Icon="&#xE7C4;"
+                                IconBrush="#475569">
+            <CheckBox Style="{StaticResource ToggleSwitch}"
+                      IsChecked="{Binding ShowShadow, Mode=TwoWay}" />
+          </controls:SettingsRow>
+
+          <Border Style="{StaticResource Divider}"
+                  Visibility="{Binding ShowShadow, Converter={StaticResource BoolToVisibility}}" />
+          <settings:SettingsSliderRow Title="{loc:Loc Shadow_Radius}"
+                                      Icon="&#xEA3A;"
+                                      IconBrush="#475569"
+                                      Minimum="0"
+                                      Maximum="24"
+                                      Step="1"
+                                      Format="Points"
+                                      Visibility="{Binding ShowShadow, Converter={StaticResource BoolToVisibility}}"
+                                      Value="{Binding BorderShadowRadius, Mode=TwoWay}" />
+
+          <Border Style="{StaticResource Divider}"
+                  Visibility="{Binding ShowShadow, Converter={StaticResource BoolToVisibility}}" />
+          <controls:SettingsRow Title="{loc:Loc Shadow_Color}"
+                                Icon="&#xE790;"
+                                IconBrush="#475569"
+                                Visibility="{Binding ShowShadow, Converter={StaticResource BoolToVisibility}}">
+            <controls:ColorPickerButton SelectedColor="{Binding BorderShadowColor, Mode=TwoWay}" />
+          </controls:SettingsRow>
+        </StackPanel>
+      </controls:SettingsCard>
+    </StackPanel>
+  </controls:SettingsPageFrame>
+  </ScrollViewer>
+</UserControl>

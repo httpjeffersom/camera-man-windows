@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="App_Name" xml:space="preserve"><value>CameraMan</value></data>
+  <data name="Tray_Tooltip" xml:space="preserve"><value>CameraMan — câmera flutuante</value></data>
+  <data name="Tray_ShowCamera" xml:space="preserve"><value>Mostrar câmera</value></data>
+  <data name="Tray_HideCamera" xml:space="preserve"><value>Ocultar câmera</value></data>
+  <data name="Tray_Settings" xml:space="preserve"><value>Configurações...</value></data>
+  <data name="Tray_RestoreDefaults" xml:space="preserve"><value>Restaurar padrões</value></data>
+  <data name="Tray_WindowSize" xml:space="preserve"><value>Tamanho da janela</value></data>
+  <data name="Tray_SpaceSlot1" xml:space="preserve"><value>Barra de espaço: posição 1</value></data>
+  <data name="Tray_SpaceSlot2" xml:space="preserve"><value>Barra de espaço: posição 2</value></data>
+  <data name="Tray_ScreenEdge" xml:space="preserve"><value>Canto da tela</value></data>
+  <data name="Tray_Camera" xml:space="preserve"><value>Câmera</value></data>
+  <data name="Tray_NoCameras" xml:space="preserve"><value>Nenhuma câmera</value></data>
+  <data name="Tray_RefreshCameras" xml:space="preserve"><value>Atualizar câmeras</value></data>
+  <data name="Tray_AlwaysOnTop" xml:space="preserve"><value>Sempre no topo</value></data>
+  <data name="Tray_Quit" xml:space="preserve"><value>Sair do CameraMan</value></data>
+
+  <data name="Settings_Title" xml:space="preserve"><value>Configurações do CameraMan</value></data>
+  <data name="Settings_Search" xml:space="preserve"><value>Pesquisar</value></data>
+  <data name="Settings_NoResults" xml:space="preserve"><value>Nenhum resultado</value></data>
+  <data name="Settings_PrivacyFooter" xml:space="preserve"><value>O vídeo nunca sai do seu PC.</value></data>
+  <data name="Page_Camera" xml:space="preserve"><value>Câmera</value></data>
+  <data name="Page_Shape" xml:space="preserve"><value>Forma</value></data>
+  <data name="Page_Framing" xml:space="preserve"><value>Enquadramento</value></data>
+  <data name="Page_Image" xml:space="preserve"><value>Imagem</value></data>
+  <data name="Page_Border" xml:space="preserve"><value>Borda e sombra</value></data>
+  <data name="Page_Window" xml:space="preserve"><value>Janela</value></data>
+  <data name="Page_General" xml:space="preserve"><value>Geral</value></data>
+  <data name="Page_Shortcuts" xml:space="preserve"><value>Atalhos</value></data>
+  <data name="Page_About" xml:space="preserve"><value>Sobre</value></data>
+
+  <data name="Camera_Title" xml:space="preserve"><value>Câmera</value></data>
+  <data name="Camera_Subtitle" xml:space="preserve"><value>Qual câmera aparece na janela flutuante</value></data>
+  <data name="Camera_Source" xml:space="preserve"><value>Fonte de vídeo</value></data>
+  <data name="Camera_SystemDefault" xml:space="preserve"><value>Padrão do sistema</value></data>
+  <data name="Camera_NoCameraFound" xml:space="preserve"><value>Nenhuma câmera encontrada</value></data>
+  <data name="Camera_AvailableCount" xml:space="preserve"><value>{0} disponíveis</value></data>
+  <data name="Camera_BackspaceFooter" xml:space="preserve"><value>Backspace na janela da câmera passa para a próxima câmera.</value></data>
+  <data name="Camera_Status" xml:space="preserve"><value>Status</value></data>
+  <data name="Camera_Connected" xml:space="preserve"><value>Conectada</value></data>
+  <data name="Camera_Loading" xml:space="preserve"><value>Iniciando a câmera...</value></data>
+  <data name="Camera_NotFound" xml:space="preserve"><value>Nenhuma câmera encontrada. Conecte uma câmera e atualize.</value></data>
+  <data name="Camera_PermissionDenied" xml:space="preserve"><value>O acesso à câmera está desativado. Permita o CameraMan em Configurações do Windows → Privacidade e segurança → Câmera.</value></data>
+  <data name="Camera_Error" xml:space="preserve"><value>Não foi possível iniciar a câmera.</value></data>
+  <data name="Camera_Disconnected" xml:space="preserve"><value>A câmera foi desconectada.</value></data>
+  <data name="Camera_Refresh" xml:space="preserve"><value>Atualizar</value></data>
+  <data name="Camera_OpenPrivacy" xml:space="preserve"><value>Abrir configurações da câmera</value></data>
+  <data name="Camera_Format" xml:space="preserve"><value>Formato</value></data>
+  <data name="Camera_VideoEffectsTitle" xml:space="preserve"><value>Efeitos de vídeo</value></data>
+  <data name="Camera_VideoEffectsDescription" xml:space="preserve"><value>Apps de câmera do Windows podem oferecer efeitos de fundo. O CameraMan mostra a imagem da própria câmera; não simula esses efeitos.</value></data>
+
+  <data name="Shape_Title" xml:space="preserve"><value>Forma</value></data>
+  <data name="Shape_Subtitle" xml:space="preserve"><value>O contorno para o qual a câmera é recortada. O alterna entre elas</value></data>
+  <data name="Shape_Circle" xml:space="preserve"><value>Círculo</value></data>
+  <data name="Shape_Circle_Short" xml:space="preserve"><value>Círculo</value></data>
+  <data name="Shape_Organic" xml:space="preserve"><value>Orgânica</value></data>
+  <data name="Shape_Square" xml:space="preserve"><value>Quadrado</value></data>
+  <data name="Shape_Vertical" xml:space="preserve"><value>Retângulo vertical (9:16)</value></data>
+  <data name="Shape_Vertical_Short" xml:space="preserve"><value>Vertical 9:16</value></data>
+  <data name="Shape_Horizontal" xml:space="preserve"><value>Retângulo horizontal (16:9)</value></data>
+  <data name="Shape_Horizontal_Short" xml:space="preserve"><value>Horizontal 16:9</value></data>
+  <data name="Shape_SoftEdge" xml:space="preserve"><value>Borda suave</value></data>
+  <data name="Shape_SoftEdge_Desc" xml:space="preserve"><value>Esmaece a câmera em direção ao contorno em vez de um corte seco</value></data>
+  <data name="Shape_CornerRadius" xml:space="preserve"><value>Raio dos cantos</value></data>
+  <data name="Shape_CornerRadius_Desc" xml:space="preserve"><value>Arredonda os cantos do quadrado e dos retângulos</value></data>
+  <data name="Shape_OrganicGroup" xml:space="preserve"><value>Orgânica</value></data>
+  <data name="Shape_Breathing" xml:space="preserve"><value>Respiração</value></data>
+  <data name="Shape_Breathing_Desc" xml:space="preserve"><value>O contorno muda de forma lentamente, como se estivesse vivo</value></data>
+  <data name="Shape_SoftEdgeBorderNote" xml:space="preserve"><value>A borda fica oculta enquanto a borda suave estiver ativa.</value></data>
+  <data name="Blob_Pebble" xml:space="preserve"><value>Seixo</value></data>
+  <data name="Blob_Cloud" xml:space="preserve"><value>Nuvem</value></data>
+  <data name="Blob_Bean" xml:space="preserve"><value>Feijão</value></data>
+  <data name="Blob_Drop" xml:space="preserve"><value>Gota</value></data>
+  <data name="Blob_Wave" xml:space="preserve"><value>Onda</value></data>
+  <data name="Blob_Shuffle" xml:space="preserve"><value>Aleatória</value></data>
+  <data name="Common_Off" xml:space="preserve"><value>Desativado</value></data>
+  <data name="Common_Points" xml:space="preserve"><value>{0} pt</value></data>
+
+  <data name="Framing_Title" xml:space="preserve"><value>Enquadramento</value></data>
+  <data name="Framing_Subtitle" xml:space="preserve"><value>Onde você aparece dentro da forma</value></data>
+  <data name="Framing_Footer" xml:space="preserve"><value>As setas movem a imagem e + / − aplicam zoom enquanto a janela da câmera está em foco.</value></data>
+  <data name="Framing_Horizontal" xml:space="preserve"><value>Posição horizontal</value></data>
+  <data name="Framing_Vertical" xml:space="preserve"><value>Posição vertical</value></data>
+  <data name="Framing_Zoom" xml:space="preserve"><value>Zoom</value></data>
+  <data name="Framing_Orientation" xml:space="preserve"><value>Orientação</value></data>
+  <data name="Framing_Mirror" xml:space="preserve"><value>Espelhar horizontalmente</value></data>
+  <data name="Framing_Mirror_Desc" xml:space="preserve"><value>Veja a si mesmo como em um espelho</value></data>
+  <data name="Framing_Flip" xml:space="preserve"><value>Inverter verticalmente</value></data>
+  <data name="Framing_Flip_Desc" xml:space="preserve"><value>Para uma câmera montada de cabeça para baixo</value></data>
+  <data name="Framing_Reset" xml:space="preserve"><value>Redefinir enquadramento</value></data>
+
+  <data name="Image_Title" xml:space="preserve"><value>Imagem</value></data>
+  <data name="Image_Subtitle" xml:space="preserve"><value>Correção de cor aplicada à prévia em tempo real</value></data>
+  <data name="Image_Brightness" xml:space="preserve"><value>Brilho</value></data>
+  <data name="Image_Contrast" xml:space="preserve"><value>Contraste</value></data>
+  <data name="Image_Saturation" xml:space="preserve"><value>Saturação</value></data>
+  <data name="Image_Reset" xml:space="preserve"><value>Redefinir imagem</value></data>
+
+  <data name="Border_Title" xml:space="preserve"><value>Borda e sombra</value></data>
+  <data name="Border_Subtitle" xml:space="preserve"><value>Um contorno e um brilho ao redor da forma</value></data>
+  <data name="Border_Group" xml:space="preserve"><value>Borda</value></data>
+  <data name="Border_Show" xml:space="preserve"><value>Mostrar borda</value></data>
+  <data name="Border_Width" xml:space="preserve"><value>Largura</value></data>
+  <data name="Border_Gradient" xml:space="preserve"><value>Gradiente</value></data>
+  <data name="Border_Gradient_Desc" xml:space="preserve"><value>Mistura duas cores de canto a canto</value></data>
+  <data name="Border_StartColor" xml:space="preserve"><value>Cor inicial</value></data>
+  <data name="Border_EndColor" xml:space="preserve"><value>Cor final</value></data>
+  <data name="Border_Color" xml:space="preserve"><value>Cor</value></data>
+  <data name="Shadow_Group" xml:space="preserve"><value>Sombra</value></data>
+  <data name="Shadow_Show" xml:space="preserve"><value>Mostrar sombra</value></data>
+  <data name="Shadow_Show_Desc" xml:space="preserve"><value>Funciona com ou sem borda</value></data>
+  <data name="Shadow_Radius" xml:space="preserve"><value>Raio</value></data>
+  <data name="Shadow_Color" xml:space="preserve"><value>Cor da sombra</value></data>
+
+  <data name="Window_Title" xml:space="preserve"><value>Janela</value></data>
+  <data name="Window_Subtitle" xml:space="preserve"><value>Tamanho e posição da câmera flutuante</value></data>
+  <data name="Window_Size" xml:space="preserve"><value>Tamanho</value></data>
+  <data name="Window_Size_Desc" xml:space="preserve"><value>Cada tamanho lembra onde você o colocou por último</value></data>
+  <data name="Window_Corner" xml:space="preserve"><value>Canto da tela</value></data>
+  <data name="Window_Corner_Desc" xml:space="preserve"><value>Encaixa a janela em um canto da tela</value></data>
+  <data name="Window_SpaceGroup" xml:space="preserve"><value>Barra de espaço</value></data>
+  <data name="Window_SpaceFooter" xml:space="preserve"><value>A barra de espaço na janela da câmera alterna entre estes dois tamanhos.</value></data>
+  <data name="Window_Slot1" xml:space="preserve"><value>Barra de espaço: primeiro tamanho</value></data>
+  <data name="Window_Slot2" xml:space="preserve"><value>Barra de espaço: segundo tamanho</value></data>
+  <data name="Window_AlwaysOnTop" xml:space="preserve"><value>Sempre no topo</value></data>
+  <data name="Window_AlwaysOnTop_Desc" xml:space="preserve"><value>Mantém a câmera acima das outras janelas</value></data>
+  <data name="Size_Xs" xml:space="preserve"><value>Muito pequeno</value></data>
+  <data name="Size_Sm" xml:space="preserve"><value>Pequeno</value></data>
+  <data name="Size_Md" xml:space="preserve"><value>Médio</value></data>
+  <data name="Size_Lg" xml:space="preserve"><value>Grande</value></data>
+  <data name="Size_Full" xml:space="preserve"><value>Tela cheia</value></data>
+  <data name="Edge_TopLeft" xml:space="preserve"><value>Superior esquerdo</value></data>
+  <data name="Edge_TopRight" xml:space="preserve"><value>Superior direito</value></data>
+  <data name="Edge_BottomRight" xml:space="preserve"><value>Inferior direito</value></data>
+  <data name="Edge_BottomLeft" xml:space="preserve"><value>Inferior esquerdo</value></data>
+
+  <data name="General_Title" xml:space="preserve"><value>Geral</value></data>
+  <data name="General_OpenAtLogin" xml:space="preserve"><value>Abrir ao iniciar sessão</value></data>
+  <data name="General_OpenAtLogin_Desc" xml:space="preserve"><value>Inicia o CameraMan quando você entra no Windows</value></data>
+  <data name="General_LoginError" xml:space="preserve"><value>Não foi possível atualizar a inicialização: {0}</value></data>
+  <data name="General_Language" xml:space="preserve"><value>Idioma</value></data>
+  <data name="General_Language_Desc" xml:space="preserve"><value>O CameraMan segue o Windows. Escolha um idioma para o app.</value></data>
+  <data name="General_LanguageSystem" xml:space="preserve"><value>Padrão do sistema</value></data>
+  <data name="General_LanguageEnglish" xml:space="preserve"><value>English</value></data>
+  <data name="General_LanguagePortuguese" xml:space="preserve"><value>Português (Brasil)</value></data>
+  <data name="General_LanguageRestart" xml:space="preserve"><value>Reinicie o CameraMan para aplicar o novo idioma.</value></data>
+  <data name="General_Restore" xml:space="preserve"><value>Restaurar padrões</value></data>
+  <data name="General_Restore_Desc" xml:space="preserve"><value>Volta todas as configurações ao estado da primeira inicialização</value></data>
+  <data name="General_RestoreButton" xml:space="preserve"><value>Restaurar...</value></data>
+  <data name="Restore_Title" xml:space="preserve"><value>Restaurar padrões?</value></data>
+  <data name="Restore_Message" xml:space="preserve"><value>Todas as configurações voltarão aos valores iniciais.</value></data>
+  <data name="Restore_Confirm" xml:space="preserve"><value>Restaurar</value></data>
+  <data name="Common_Cancel" xml:space="preserve"><value>Cancelar</value></data>
+
+  <data name="Shortcuts_Title" xml:space="preserve"><value>Atalhos</value></data>
+  <data name="Shortcuts_Subtitle" xml:space="preserve"><value>Controle a câmera sem sair do que você está gravando</value></data>
+  <data name="Shortcuts_Global" xml:space="preserve"><value>De qualquer app</value></data>
+  <data name="Shortcuts_GlobalToggle" xml:space="preserve"><value>Atalhos globais</value></data>
+  <data name="Shortcuts_GlobalToggle_Desc" xml:space="preserve"><value>Funcionam enquanto outro app está em primeiro plano</value></data>
+  <data name="Shortcuts_ShowHide" xml:space="preserve"><value>Mostrar / ocultar câmera</value></data>
+  <data name="Shortcuts_SwitchSize" xml:space="preserve"><value>Alternar tamanho da janela</value></data>
+  <data name="Shortcuts_Conflict" xml:space="preserve"><value>Alguns atalhos globais não puderam ser registrados: {0}</value></data>
+  <data name="Shortcuts_Window" xml:space="preserve"><value>Janela da câmera</value></data>
+  <data name="Shortcuts_WindowFooter" xml:space="preserve"><value>Funcionam enquanto a janela da câmera está em foco.</value></data>
+  <data name="Shortcuts_Move" xml:space="preserve"><value>Mover a imagem</value></data>
+  <data name="Shortcuts_Zoom" xml:space="preserve"><value>Aplicar zoom + / −</value></data>
+  <data name="Shortcuts_ResetZoom" xml:space="preserve"><value>Redefinir zoom</value></data>
+  <data name="Shortcuts_Mirror" xml:space="preserve"><value>Espelhar horizontalmente</value></data>
+  <data name="Shortcuts_Flip" xml:space="preserve"><value>Inverter verticalmente</value></data>
+  <data name="Shortcuts_NextShape" xml:space="preserve"><value>Próxima forma</value></data>
+  <data name="Shortcuts_NextCamera" xml:space="preserve"><value>Próxima câmera</value></data>
+  <data name="Shortcuts_SwitchSizeKey" xml:space="preserve"><value>Alternar tamanho da janela</value></data>
+  <data name="Shortcuts_Menu" xml:space="preserve"><value>Menu</value></data>
+  <data name="Shortcuts_Settings" xml:space="preserve"><value>Configurações</value></data>
+  <data name="Shortcuts_Quit" xml:space="preserve"><value>Sair do CameraMan</value></data>
+
+  <data name="About_Description" xml:space="preserve"><value>Uma câmera flutuante para gravações de tela, demonstrações e chamadas.</value></data>
+  <data name="About_Version" xml:space="preserve"><value>Versão {0}</value></data>
+  <data name="About_Source" xml:space="preserve"><value>Código-fonte (Windows)</value></data>
+  <data name="About_Source_Desc" xml:space="preserve"><value>github.com/httpjeffersom/camera-man-windows · fork do app para macOS</value></data>
+  <data name="About_Upstream" xml:space="preserve"><value>Projeto original (macOS)</value></data>
+  <data name="About_Upstream_Desc" xml:space="preserve"><value>CameraMan para macOS · github.com/lucianodiisouza/camera-man-macos</value></data>
+  <data name="About_Open" xml:space="preserve"><value>Abrir</value></data>
+  <data name="About_Platform" xml:space="preserve"><value>Port para Windows · .NET 10 · WPF</value></data>
+  <data name="About_PortNote" xml:space="preserve"><value>Port nativo para Windows do app open-source para macOS. Licença MIT.</value></data>
+
+  <data name="Camera_PermissionTitle" xml:space="preserve"><value>O acesso à câmera foi negado</value></data>
+  <data name="Camera_PermissionMessage" xml:space="preserve"><value>Abra Configurações do Windows → Privacidade e segurança → Câmera e permita o CameraMan.</value></data>
+  <data name="Camera_OpenSettings" xml:space="preserve"><value>Abrir Configurações</value></data>
+  <data name="Camera_NotFoundTitle" xml:space="preserve"><value>Nenhuma câmera encontrada</value></data>
+  <data name="Camera_NotFoundMessage" xml:space="preserve"><value>Conecte uma câmera ou verifique as permissões.</value></data>
+  <data name="Camera_DisconnectedTitle" xml:space="preserve"><value>Câmera desconectada</value></data>
+  <data name="Camera_LoadingText" xml:space="preserve"><value>Solicitando acesso à câmera...</value></data>
+  <data name="Camera_Retry" xml:space="preserve"><value>Tentar novamente</value></data>
+  <data name="Error_Unexpected" xml:space="preserve"><value>O CameraMan encontrou um erro:\n{0}</value></data>
+  <data name="Error_StartupTitle" xml:space="preserve"><value>Não foi possível iniciar o CameraMan</value></data>
+  <data name="Camera_ErrorTitle" xml:space="preserve"><value>Problema com a câmera</value></data>
+</root>

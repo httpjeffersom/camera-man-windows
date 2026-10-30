@@ -2,59 +2,44 @@
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to
+[Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+This repository is the Windows port of [CameraMan for macOS](https://github.com/lucianodiisouza/camera-man-macos).
+Version numbers are independent from the macOS app.
 
 ## [Unreleased]
 
 - (Add new changes here before releasing)
 
-## [1.1.0] - 2026-09-22
+## [1.0.0] - 2026-10-30
+
+First Windows release: a native C#/WPF port of CameraMan, published as a fork of the macOS project.
 
 ### Added
 
-- New settings window in the style of System Settings: sidebar with search (⌘F), colored pages, card rows
-- Visual shape picker with live previews
-- Organic shape, rebuilt: five smooth presets (Pebble, Cloud, Bean, Drop, Wave), Shuffle, and optional Breathing motion
-- Soft edge for every shape: the camera fades out toward the outline instead of a hard cut
-- Open at login
-- Global shortcuts from any app: ⌃⌥⌘C shows / hides the camera, ⌃⌥⌘S switches size
-- Show / Hide Camera in the menu bar; the camera turns off (light off) while hidden, and ⌘W hides instead of closing
-- The camera follows you to every desktop and over full-screen apps
-- Settings point to the macOS video effects (Portrait, Studio Light, Background) in the menu bar
-- Hide Dock icon option (menu bar only)
-- App Sandbox; submitted to the Mac App Store as "CameraMan: Floating Webcam"
-- Brazilian Portuguese (pt-BR); Settings → General → Language picks the language just for CameraMan
-- App icon
-- Signed with Developer ID and notarized by Apple: opens without Gatekeeper warnings
+- Live camera preview in a frameless, transparent, always-on-top window, with cover-fit framing, zoom (1–2×), panning
+  offsets and horizontal/vertical mirroring.
+- Five shapes: circle, organic blob (five presets, shuffle, breathing), rounded square, vertical 9:16 and horizontal
+  16:9, with per-shape corner radius.
+- Soft edge (distance-field feather), solid or gradient border, blurred shadow.
+- Brightness, contrast and saturation applied to the frames (CPU lookup table).
+- Five window sizes, corner snapping, per-size and per-monitor position memory, mixed-DPI aware placement.
+- Nine-page settings window with sidebar, search, live previews, English and Brazilian Portuguese.
+- Notification-area icon with show/hide, size, corner, slot, camera, always-on-top, restore defaults and quit.
+- Global `Ctrl+Alt+C` / `Ctrl+Alt+S` shortcuts, `Ctrl+,` for settings, `Ctrl+Q` to quit and in-window framing keys.
+- Pause on hide, session lock and sleep; single-instance activation.
+- Settings persisted as JSON with atomic replacement, validation and corrupt-file recovery; optional start at login.
+- Local error log with rotation; per-user, `asInvoker` execution.
 
-### Changed
+### Fixed before publishing
 
-- Bundle identifier is now `dev.oprimo.CameraMan` (settings from 1.0 start fresh)
-- Restore defaults asks for confirmation from the menu bar too
-- Sharper image: the camera now runs at its best quality instead of 480×360
-- About 90% less CPU: color correction runs on the GPU instead of filtering every frame on the CPU
-- The camera stops while the screen sleeps or is locked
+- The camera could jump back above the Settings window while a border or shadow slider was being dragged.
+- A hand-edited settings file with duplicate placement keys could stop the app from starting.
+- A malformed organic blob (null wave, extreme amplitude or harmonic) could break startup or the outline.
+- The error log grew without a limit.
 
-### Removed
+### Known limitations
 
-- The old random / hand-drawn custom shapes (they had visible corners); replaced by the new organic shape
-
-### Fixed
-
-- Border, gradient and shadow colors were never saved and reset on every launch
-
-## [1.0.0] - 2025-02-09
-
-### Added
-
-- Camera preview with selectable video devices
-- Custom shapes: Circle, Rectangle, Rounded Rectangle
-- Position and zoom controls (arrow keys, +/-, R to reset)
-- Flip horizontal, cycle shape, switch camera, toggle window size
-- Border settings (toggle, width, color)
-- Settings panel and status bar menu
-- Persistence of settings via UserDefaults
-- DMG build script and distribution instructions
-
-[Unreleased]: https://github.com/oprimodev/camera-man-macos/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/oprimodev/camera-man-macos/releases/tag/v1.0.0
+See the "Status: what still needs work" section of the [README](README.md) and
+[docs/FEATURE_STATUS.md](docs/FEATURE_STATUS.md).

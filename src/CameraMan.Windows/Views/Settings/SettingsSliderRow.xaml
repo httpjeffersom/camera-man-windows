@@ -1,0 +1,28 @@
+<UserControl x:Class="CameraMan.Windows.Views.Settings.SettingsSliderRow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:CameraMan.Windows.Views.Controls"
+             x:Name="Root">
+  <StackPanel>
+    <controls:SettingsRow Title="{Binding Title, ElementName=Root}"
+                          Subtitle="{Binding Subtitle, ElementName=Root}"
+                          Icon="{Binding Icon, ElementName=Root}"
+                          IconBrush="{Binding IconBrush, ElementName=Root}">
+      <TextBlock x:Name="ValueText"
+                 FontFamily="{DynamicResource UiFont}"
+                 FontSize="12.5"
+                 FontWeight="SemiBold"
+                 Foreground="{DynamicResource TextSecondary}"
+                 VerticalAlignment="Center" />
+    </controls:SettingsRow>
+    <Slider x:Name="Slider"
+            Style="{StaticResource ThickSlider}"
+            Margin="52,0,14,10"
+            Minimum="{Binding Minimum, ElementName=Root}"
+            Maximum="{Binding Maximum, ElementName=Root}"
+            SmallChange="{Binding Step, ElementName=Root}"
+            LargeChange="{Binding LargeChange, ElementName=Root}"
+            TickFrequency="{Binding Step, ElementName=Root}"
+            Value="{Binding Value, ElementName=Root, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+  </StackPanel>
+</UserControl>

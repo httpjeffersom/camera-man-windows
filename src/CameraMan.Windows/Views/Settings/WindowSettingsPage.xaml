@@ -1,0 +1,91 @@
+<UserControl x:Class="CameraMan.Windows.Views.Settings.WindowSettingsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:CameraMan.Windows.Views.Controls"
+             xmlns:models="clr-namespace:CameraMan.Windows.Models"
+             xmlns:loc="clr-namespace:CameraMan.Windows.Resources">
+  <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+    <controls:SettingsPageFrame>
+    <StackPanel>
+      <TextBlock Text="{loc:Loc Page_Window}" Style="{StaticResource PageTitle}" />
+      <TextBlock Text="{loc:Loc Window_Subtitle}" Style="{StaticResource PageSubtitle}" Margin="0,4,0,16" />
+
+      <controls:SettingsCard>
+        <StackPanel>
+          <controls:SettingsRow Title="{loc:Loc Window_Size}"
+                                Subtitle="{loc:Loc Window_Size_Desc}"
+                                Icon="&#xE740;"
+                                IconBrush="{DynamicResource AccentWindow}">
+            <ComboBox Style="{StaticResource SettingsComboBox}"
+                      ItemsSource="{x:Static models:WindowSizePresetExtensions.All}"
+                      SelectedItem="{Binding WindowSizePreset, Mode=TwoWay}">
+              <ComboBox.ItemTemplate>
+                <DataTemplate>
+                  <TextBlock Text="{Binding Converter={StaticResource SizeName}}" />
+                </DataTemplate>
+              </ComboBox.ItemTemplate>
+            </ComboBox>
+          </controls:SettingsRow>
+          <Border Style="{StaticResource Divider}" />
+          <controls:SettingsRow Title="{loc:Loc Window_Corner}"
+                                Subtitle="{loc:Loc Window_Corner_Desc}"
+                                Icon="&#xE7C4;"
+                                IconBrush="{DynamicResource AccentWindow}">
+            <ComboBox Style="{StaticResource SettingsComboBox}"
+                      ItemsSource="{x:Static models:WindowSizePresetExtensions.Edges}"
+                      SelectedItem="{Binding ScreenEdge, Mode=TwoWay}">
+              <ComboBox.ItemTemplate>
+                <DataTemplate>
+                  <TextBlock Text="{Binding Converter={StaticResource EdgeName}}" />
+                </DataTemplate>
+              </ComboBox.ItemTemplate>
+            </ComboBox>
+          </controls:SettingsRow>
+          <Border Style="{StaticResource Divider}" />
+          <controls:SettingsRow Title="{loc:Loc Window_AlwaysOnTop}"
+                                Subtitle="{loc:Loc Window_AlwaysOnTop_Desc}"
+                                Icon="&#xE840;"
+                                IconBrush="{DynamicResource AccentWindow}">
+            <CheckBox Style="{StaticResource ToggleSwitch}"
+                      IsChecked="{Binding AlwaysOnTop, Mode=TwoWay}" />
+          </controls:SettingsRow>
+        </StackPanel>
+      </controls:SettingsCard>
+
+      <controls:SettingsCard Header="{loc:Loc Window_SpaceGroup}"
+                             Footer="{loc:Loc Window_SpaceFooter}"
+                             Margin="0,16,0,0">
+        <StackPanel>
+          <controls:SettingsRow Title="{loc:Loc Window_Slot1}"
+                                Icon="&#xE8AC;"
+                                IconBrush="#6366F1">
+            <ComboBox Style="{StaticResource SettingsComboBox}"
+                      ItemsSource="{x:Static models:WindowSizePresetExtensions.All}"
+                      SelectedItem="{Binding SpaceSlot1, Mode=TwoWay}">
+              <ComboBox.ItemTemplate>
+                <DataTemplate>
+                  <TextBlock Text="{Binding Converter={StaticResource SizeName}}" />
+                </DataTemplate>
+              </ComboBox.ItemTemplate>
+            </ComboBox>
+          </controls:SettingsRow>
+          <Border Style="{StaticResource Divider}" />
+          <controls:SettingsRow Title="{loc:Loc Window_Slot2}"
+                                Icon="&#xE8AC;"
+                                IconBrush="#6366F1">
+            <ComboBox Style="{StaticResource SettingsComboBox}"
+                      ItemsSource="{x:Static models:WindowSizePresetExtensions.All}"
+                      SelectedItem="{Binding SpaceSlot2, Mode=TwoWay}">
+              <ComboBox.ItemTemplate>
+                <DataTemplate>
+                  <TextBlock Text="{Binding Converter={StaticResource SizeName}}" />
+                </DataTemplate>
+              </ComboBox.ItemTemplate>
+            </ComboBox>
+          </controls:SettingsRow>
+        </StackPanel>
+      </controls:SettingsCard>
+    </StackPanel>
+  </controls:SettingsPageFrame>
+  </ScrollViewer>
+</UserControl>

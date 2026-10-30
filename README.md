@@ -1,124 +1,147 @@
-<p align="center">
-  <img src="CameraMan/Assets.xcassets/AppIcon.appiconset/icon_256x256.png" width="128" alt="CameraMan icon">
-</p>
+# CameraMan for Windows
 
-<h1 align="center">CameraMan</h1>
+A floating camera for Windows 11 — put yourself on screen in recordings, demos, classes and calls.
 
-<p align="center">
-  A floating camera for your Mac — put yourself on screen in recordings, demos, classes and calls.<br>
-  <a href="https://github.com/lucianodiisouza/camera-man-macos/releases/latest"><b>Download the latest release</b></a> · Mac App Store (in review) · English &amp; Português (Brasil)
-</p>
+This repository is a **fork** of [CameraMan for macOS](https://github.com/lucianodiisouza/camera-man-macos) and contains
+the native Windows port: the same product, the same behaviour and the same MIT license, re-implemented in C# with
+WPF and the Windows camera stack. The macOS app remains the upstream project and is not modified here.
 
-<p align="center">
-  <img src="docs/images/1-hero.png" alt="CameraMan bubble over a presentation" width="860">
-</p>
+- Windows port: <https://github.com/httpjeffersom/camera-man-windows>
+- macOS original: <https://github.com/lucianodiisouza/camera-man-macos>
 
 ## Features
 
-- **Made for recording**: global shortcuts work from any app (⌃⌥⌘C show/hide, ⌃⌥⌘S switch size); the bubble follows you across desktops and over full-screen apps; the camera turns off completely while hidden or while the screen is locked
-- **Shapes**: circle, organic (five presets, shuffle, optional breathing motion), square, vertical 9:16 and horizontal 16:9, with soft edge and corner radius
-- **Framing**: move the image inside the shape, zoom, mirror or flip
-- **Look**: brightness, contrast and saturation on the GPU; solid or gradient border; soft shadow; works with macOS video effects (Portrait, Studio Light, backgrounds)
-- **Window**: five sizes, snap to any corner, each size remembers its own place, Space switches between your two favourite sizes
-- **Light**: sharp HD image at about 3% CPU and ~27 MB of memory
-- **Settings window** in the style of System Settings, with search
-- **Menu bar** icon, optional Dock icon, open at login
-- **Private**: no network access, no account, no analytics — video never leaves your Mac
+- **Made for recording**: global shortcuts work from any app (`Ctrl+Alt+C` show/hide, `Ctrl+Alt+S` switch size); the
+  floating camera stays above other windows; capture stops completely while the camera is hidden or the session is
+  locked.
+- **Shapes**: circle, organic (five presets, shuffle, optional breathing motion), square, vertical 9:16 and horizontal
+  16:9, with soft edge and per-shape corner radius.
+- **Framing**: move the image inside the shape, zoom, mirror or flip.
+- **Look**: brightness, contrast and saturation on the camera frames; solid or gradient border; soft shadow.
+- **Window**: five sizes, snap to any corner, each size remembers its own place and monitor, `Space` switches between
+  your two favourite sizes.
+- **Settings window** in the style of Windows Settings, with nine pages and search.
+- **Notification-area icon**, optional start at login, English and Brazilian Portuguese.
+- **Private**: no network access, no account, no analytics — video never leaves the machine.
 
-<table>
-  <tr>
-    <td><img src="docs/images/2-shape.png" alt="Shape settings"></td>
-    <td><img src="docs/images/3-border.png" alt="Border and shadow settings"></td>
-  </tr>
-  <tr>
-    <td><img src="docs/images/4-shortcuts.png" alt="Shortcuts"></td>
-    <td><img src="docs/images/5-framing.png" alt="Framing settings"></td>
-  </tr>
-</table>
+## Windows port notes
 
-## Install
+| macOS | Windows port |
+|---|---|
+| Swift, SwiftUI, AVFoundation | C#, WPF, WinRT `MediaCapture` |
+| ⌃⌥⌘C / ⌃⌥⌘S | `Ctrl+Alt+C` / `Ctrl+Alt+S` (Windows reserves most Win-key chords) |
+| Core Image on the GPU | CPU lookup table + fixed-point saturation |
+| Soft edge blurred outward, window padded | Soft edge feathered inward from the outline (no transparent padding) |
+| Menu bar icon, optional Dock icon | Notification-area icon, no taskbar button |
+| System Settings style | Windows 11 Settings style, native title bar |
+| `UserDefaults` | `%APPDATA%\CameraMan\settings.json` |
+| App Sandbox + notarization | Plain per-user executable, no installer yet |
 
-Download `CameraMan-<version>.dmg` from [Releases](https://github.com/lucianodiisouza/camera-man-macos/releases/latest), open it and drag CameraMan to Applications. The app is signed and notarized by Apple, so it opens without warnings. On first launch macOS asks for camera access.
+The full analysis is in [docs/PORTING_PLAN.md](docs/PORTING_PLAN.md), the API-by-API mapping in
+[docs/WINDOWS_APIS.md](docs/WINDOWS_APIS.md) and the verification matrix in [docs/FEATURE_STATUS.md](docs/FEATURE_STATUS.md).
 
-Requires macOS 14 Sonoma or later.
+## Requirements
 
-## Keyboard shortcuts
+- Windows 11 (x64). Windows 10 2004+ should work but is not the tested target.
+- A webcam. The app uses the standard Windows camera stack and asks the system for access on first use.
+- To build: .NET SDK 10.0.401 or newer. See [docs/BUILDING.md](docs/BUILDING.md).
+- To run a published copy: nothing else. Self-contained builds include the .NET runtime.
 
-| Action | Keys | Where |
-|---|---|---|
-| Show / hide camera | ⌃⌥⌘C | any app |
-| Switch window size | ⌃⌥⌘S | any app |
-| Move the image | ← → ↑ ↓ | camera window |
-| Zoom in / out, reset | + / −, R | camera window |
-| Mirror / flip | / , V | camera window |
-| Next shape | O | camera window |
-| Next camera | ⌫ | camera window |
-| Switch window size | Space | camera window |
-| Settings | ⌘, | menu |
+## Quick start
 
-Global shortcuts can be turned off in Settings → Shortcuts.
+```powershell
+dotnet build CameraMan.Windows.slnx -c Release
+dotnet run --project src/CameraMan.Windows -c Release
+```
+
+Or run the published, self-contained build:
+
+```powershell
+.\publish\win-x64\CameraMan.Windows.exe
+```
+
+On first launch the camera window appears at the top-left corner of the primary monitor, 400 px wide. The tray icon is
+the way back to the app after you close the camera window.
+
+## Keyboard
+
+| Shortcut | Action |
+|---|---|
+| `Ctrl+Alt+C` | Show/hide the camera (global; can be disabled in Settings) |
+| `Ctrl+Alt+S` | Switch to the next size preset (global) |
+| `Ctrl+,` | Open settings (camera window focused, or tray menu) |
+| `Ctrl+Q` | Quit (camera window or tray menu) |
+| Arrows | Move the framing |
+| `+` / `-` / `R` | Zoom in, zoom out, reset |
+| `/` / `V` | Mirror horizontally / vertically |
+| `O` | Next shape |
+| `Backspace` | Next camera |
+| `Space` | Toggle the two favourite sizes |
+| `Ctrl+F` | Search settings |
+| `Esc` | Close settings (when the search box is empty) |
+
+## Where things are stored
+
+- Settings: `%APPDATA%\CameraMan\settings.json`
+- Error log (only written on unexpected failures, rotated at 256 KB): `%APPDATA%\CameraMan\error.log`
+- Start at login: `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`, value `CameraMan`, written only when you enable
+  the option.
+
+Camera frames exist only in memory. They are never written to disk or sent over the network, and the project contains
+no networking or media-encoding code.
+
+## Status: what still needs work
+
+The port builds cleanly and the automated suite passes, but it is **not finished**. Known gaps and open items:
+
+- **Manual verification is incomplete.** Live preview, formats, shapes, borders, shadows, soft edge, tray, global
+  shortcuts and settings persistence were exercised on real hardware. Multi-monitor with mixed DPI, lock/sleep
+  resume, per-preset position restore across launches, camera switching by `Backspace`, zoom/pan/mirror by keyboard and
+  "restore defaults" still need a hands-on pass. The matrix in [docs/FEATURE_STATUS.md](docs/FEATURE_STATUS.md) marks
+  each item as *Verified*, *Implemented* or *Adapted*.
+- **Search finds settings but does not scroll to them.** Clicking a result opens the page; the matching row is not
+  highlighted.
+- **No installer or code signing.** The published folder is portable and unsigned, so SmartScreen warns on first run.
+- **Topmost has limits.** A normal topmost window cannot cover exclusive-fullscreen DirectX apps; borderless
+  fullscreen works.
+- **macOS video effects are absent.** Portrait, Studio Light and background replacement are system features with no
+  stable public Windows equivalent; the app explains them but does not simulate them.
+- **Soft edge fades inward only**, so the visible silhouette is slightly tighter than on macOS (which blurs outward
+  into transparent padding).
+- **Colour correction runs on the CPU**, which costs more than Core Image but keeps the app dependency-free.
+- **Language changes need a restart.**
+- **No separate shadow opacity control**; the shadow colour keeps its alpha (the default is 50 % black).
+- **Notifications and updates**: there is no update check and no toast outside the app's own overlay.
+
+## Privacy and security
+
+CameraMan has no networking code at all: no HTTP client, no sockets, no telemetry, no accounts. The camera stream is
+read frame by frame into a reusable buffer and drawn; it is never encoded or saved. The only files touched are the
+settings/log in `%APPDATA%` and the per-user Run key when you enable start at login. The app runs as the current user
+(`asInvoker`) and never requests administrator rights. See [PRIVACY.md](PRIVACY.md) and [SECURITY.md](SECURITY.md).
 
 ## Build from source
 
-Requirements: macOS 14+, Xcode 16+, a camera.
+Requirements: Windows 11 x64, .NET SDK 10, a camera for the manual test.
 
-1. Open `CameraMan.xcodeproj` in Xcode.
-2. Select the **CameraMan** scheme and **My Mac**, then Build and Run (⌘R).
-
-Or from the command line:
-
-```bash
-xcodebuild -scheme CameraMan -configuration Debug -destination 'platform=macOS' -derivedDataPath build build
-open build/Build/Products/Debug/CameraMan.app
+```powershell
+dotnet build CameraMan.Windows.slnx -c Release
+dotnet test CameraMan.Windows.slnx -c Release
+dotnet publish src\CameraMan.Windows\CameraMan.Windows.csproj -c Release -r win-x64 --self-contained true -o publish\win-x64
 ```
 
-Sign debug builds with your own development team (Signing & Capabilities). Ad-hoc builds work, but macOS asks for camera access again after every rebuild, because it remembers the permission per signature.
-
-## Distribution
-
-### DMG (signed and notarized)
-
-Prerequisite (first time only): `brew install create-dmg`
-
-```bash
-./create-dmg.sh
-```
-
-It builds a universal Release, signs it with a Developer ID certificate (hardened runtime + App Sandbox + camera entitlement), notarizes and staples both the app and the DMG, and writes `CameraMan-<version>.dmg` in the project root, with the version from `MARKETING_VERSION`. It reads two settings from the environment or from a git-ignored `.env.local`:
-
-```bash
-CAMERAMAN_SIGN_IDENTITY="Developer ID Application: Your Name (TEAMID)"
-CAMERAMAN_NOTARY_PROFILE="your-notary-profile"   # from: xcrun notarytool store-credentials
-```
-
-Without them the DMG is still built, but ad-hoc signed, and macOS blocks it on other Macs.
-
-DMG copies don't update themselves: new versions are published on GitHub Releases. App Store copies update through the App Store.
-
-### Mac App Store
-
-```bash
-./appstore.sh            # archive + export a signed .pkg to build/appstore
-./appstore.sh --upload   # archive + upload to App Store Connect
-```
-
-Signing is automatic through the Apple account in Xcode → Settings → Accounts. Listing text (English and Portuguese), review notes and screenshot sizes are in [appstore/LISTING.md](appstore/LISTING.md); the privacy policy is [PRIVACY.md](PRIVACY.md).
-
-Screenshots are composed from real captures of the settings window by [appstore/screenshots/compose.swift](appstore/screenshots/compose.swift); `--readme` writes the images used on this page.
-
-### App icon
-
-```bash
-swift generate-icon.swift
-```
+No Visual Studio workload, Windows App SDK, DirectX SDK or Node.js is required. See
+[docs/BUILDING.md](docs/BUILDING.md) for prerequisites, the manual test checklist and troubleshooting.
 
 ## Localization
 
-English and Brazilian Portuguese, in String Catalogs (`CameraMan/Localizable.xcstrings`, `CameraMan/InfoPlist.xcstrings`). CameraMan follows the Mac's language; Settings → General → Language opens the macOS setting to pick one just for CameraMan.
+English and Brazilian Portuguese. The language picker is in Settings → General; the choice applies on the next
+launch. "System" follows the installed Windows UI language.
 
 ## Contributing
 
-Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for community standards. Security issues: [SECURITY.md](SECURITY.md).
+Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for the development setup and
+[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for community standards. Security issues: [SECURITY.md](SECURITY.md).
 
 ## Changelog
 
@@ -126,4 +149,6 @@ See [CHANGELOG.md](CHANGELOG.md) for version history.
 
 ## License
 
-MIT
+MIT. The original macOS project is Copyright (c) 2025 Camera-Man Contributors; this port adds
+Copyright (c) 2026 CameraMan.Windows contributors. See [LICENSE](LICENSE) and
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

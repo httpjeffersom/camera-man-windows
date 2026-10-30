@@ -1,0 +1,49 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <FontFamily x:Key="UiFont">Segoe UI Variable Text, Segoe UI</FontFamily>
+  <FontFamily x:Key="IconFont">Segoe Fluent Icons, Segoe MDL2 Assets</FontFamily>
+
+  <SolidColorBrush x:Key="WindowBackground" Color="#F4F5F7" />
+  <SolidColorBrush x:Key="SidebarBackground" Color="#ECEEF2" />
+  <SolidColorBrush x:Key="CardBackground" Color="#FFFFFF" />
+  <SolidColorBrush x:Key="CardStroke" Color="#E1E4EA" />
+  <SolidColorBrush x:Key="TextPrimary" Color="#17181A" />
+  <SolidColorBrush x:Key="TextSecondary" Color="#6B7280" />
+  <SolidColorBrush x:Key="TextTertiary" Color="#8B919C" />
+  <SolidColorBrush x:Key="ControlBackground" Color="#FFFFFF" />
+  <SolidColorBrush x:Key="ControlBorder" Color="#D5D9E0" />
+  <SolidColorBrush x:Key="TrackBackground" Color="#E3E6EC" />
+  <SolidColorBrush x:Key="HoverBackground" Color="#12000000" />
+  <SolidColorBrush x:Key="PressedBackground" Color="#20000000" />
+  <SolidColorBrush x:Key="SelectionBackground" Color="#2563EB" />
+  <SolidColorBrush x:Key="Accent" Color="#2563EB" />
+  <SolidColorBrush x:Key="AccentHover" Color="#1D4ED8" />
+  <SolidColorBrush x:Key="Selection" Color="#EF4444" />
+  <SolidColorBrush x:Key="Danger" Color="#DC2626" />
+  <SolidColorBrush x:Key="Separator" Color="#E6E8ED" />
+  <SolidColorBrush x:Key="WindowChromeBorder" Color="#D8DBE2" />
+  <SolidColorBrush x:Key="ToastBackground" Color="#E615171D" />
+  <SolidColorBrush x:Key="ToggleKnob" Color="#FFFFFF" />
+
+  <SolidColorBrush x:Key="AccentCamera" Color="#EF4444" />
+  <SolidColorBrush x:Key="AccentShape" Color="#8B5CF6" />
+  <SolidColorBrush x:Key="BlobTileFill" Color="#0F000000" />
+  <SolidColorBrush x:Key="AccentFraming" Color="#0EA5E9" />
+  <SolidColorBrush x:Key="AccentImage" Color="#F59E0B" />
+  <SolidColorBrush x:Key="AccentBorder" Color="#E0457B" />
+  <SolidColorBrush x:Key="AccentWindow" Color="#10B981" />
+  <SolidColorBrush x:Key="AccentGeneral" Color="#6B7280" />
+  <SolidColorBrush x:Key="AccentShortcuts" Color="#6366F1" />
+  <SolidColorBrush x:Key="AccentAbout" Color="#475569" />
+
+  <LinearGradientBrush x:Key="PreviewBackdrop" StartPoint="0,0" EndPoint="1,1">
+    <GradientStop Color="#1C1C22" Offset="0" />
+    <GradientStop Color="#24242C" Offset="0.55" />
+    <GradientStop Color="#3A1C22" Offset="1" />
+  </LinearGradientBrush>
+
+  <LinearGradientBrush x:Key="PreviewSubject" StartPoint="0,0" EndPoint="0,1">
+    <GradientStop Color="#64748B" Offset="0" />
+    <GradientStop Color="#334155" Offset="1" />
+  </LinearGradientBrush>
+</ResourceDictionary>

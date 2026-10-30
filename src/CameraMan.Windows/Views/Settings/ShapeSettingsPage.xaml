@@ -1,0 +1,88 @@
+<UserControl x:Class="CameraMan.Windows.Views.Settings.ShapeSettingsPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:CameraMan.Windows.Views.Controls"
+             xmlns:settings="clr-namespace:CameraMan.Windows.Views.Settings"
+             xmlns:models="clr-namespace:CameraMan.Windows.Models"
+             xmlns:loc="clr-namespace:CameraMan.Windows.Resources">
+  <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+    <controls:SettingsPageFrame>
+    <StackPanel>
+      <TextBlock Text="{loc:Loc Page_Shape}" Style="{StaticResource PageTitle}" />
+      <TextBlock Text="{loc:Loc Shape_Subtitle}" Style="{StaticResource PageSubtitle}" Margin="0,4,0,16" />
+
+      <UniformGrid Columns="5" Margin="0,0,0,16">
+        <controls:ShapeCard Shape="Circle"
+                            Label="{loc:Loc Shape_Circle_Short}"
+                            Margin="0,0,6,0"
+                            IsChecked="{Binding ShapeType, Converter={StaticResource EnumEquals}, ConverterParameter={x:Static models:ShapeType.Circle}, Mode=TwoWay}" />
+        <controls:ShapeCard Shape="Organic"
+                            Label="{loc:Loc Shape_Organic}"
+                            Blob="{Binding OrganicBlob}"
+                            Margin="0,0,6,0"
+                            IsChecked="{Binding ShapeType, Converter={StaticResource EnumEquals}, ConverterParameter={x:Static models:ShapeType.Organic}, Mode=TwoWay}" />
+        <controls:ShapeCard Shape="Square"
+                            Label="{loc:Loc Shape_Square}"
+                            CornerRadiusValue="{Binding SquareCornerRadius}"
+                            Margin="0,0,6,0"
+                            IsChecked="{Binding ShapeType, Converter={StaticResource EnumEquals}, ConverterParameter={x:Static models:ShapeType.Square}, Mode=TwoWay}" />
+        <controls:ShapeCard Shape="VerticalRectangle"
+                            Label="{loc:Loc Shape_Vertical_Short}"
+                            CornerRadiusValue="{Binding VerticalCornerRadius}"
+                            Margin="0,0,6,0"
+                            IsChecked="{Binding ShapeType, Converter={StaticResource EnumEquals}, ConverterParameter={x:Static models:ShapeType.VerticalRectangle}, Mode=TwoWay}" />
+        <controls:ShapeCard Shape="HorizontalRectangle"
+                            Label="{loc:Loc Shape_Horizontal_Short}"
+                            CornerRadiusValue="{Binding HorizontalCornerRadius}"
+                            IsChecked="{Binding ShapeType, Converter={StaticResource EnumEquals}, ConverterParameter={x:Static models:ShapeType.HorizontalRectangle}, Mode=TwoWay}" />
+      </UniformGrid>
+
+      <controls:SettingsCard Header="{loc:Loc Shape_OrganicGroup}"
+                             Visibility="{Binding IsOrganic, Converter={StaticResource BoolToVisibility}}"
+                             Margin="0,0,0,16">
+        <StackPanel>
+          <WrapPanel x:Name="BlobPanel" Margin="12,10,12,10" />
+          <Border Style="{StaticResource Divider}" />
+          <controls:SettingsRow Title="{loc:Loc Shape_Breathing}"
+                                Subtitle="{loc:Loc Shape_Breathing_Desc}"
+                                Icon="&#xE8B9;"
+                                IconBrush="#14B8A6">
+            <CheckBox Style="{StaticResource ToggleSwitch}"
+                      IsChecked="{Binding OrganicBreathing, Mode=TwoWay}" />
+          </controls:SettingsRow>
+        </StackPanel>
+      </controls:SettingsCard>
+
+      <controls:SettingsCard>
+        <StackPanel>
+          <settings:SettingsSliderRow Title="{loc:Loc Shape_SoftEdge}"
+                                      Subtitle="{loc:Loc Shape_SoftEdge_Desc}"
+                                      Icon="&#xEA3A;"
+                                      IconBrush="{DynamicResource AccentShape}"
+                                      Minimum="0"
+                                      Maximum="40"
+                                      Step="1"
+                                      Format="OffOrPoints"
+                                      Value="{Binding SoftEdge, Mode=TwoWay}" />
+          <Border Style="{StaticResource Divider}"
+                  Visibility="{Binding ShowCornerRadius, Converter={StaticResource BoolToVisibility}}" />
+          <settings:SettingsSliderRow Title="{loc:Loc Shape_CornerRadius}"
+                                      Subtitle="{loc:Loc Shape_CornerRadius_Desc}"
+                                      Icon="&#xE7C4;"
+                                      IconBrush="{DynamicResource AccentShape}"
+                                      Minimum="0"
+                                      Maximum="150"
+                                      Step="2"
+                                      Format="Points"
+                                      Visibility="{Binding ShowCornerRadius, Converter={StaticResource BoolToVisibility}}"
+                                      Value="{Binding ActiveCornerRadius, Mode=TwoWay}" />
+        </StackPanel>
+      </controls:SettingsCard>
+
+      <TextBlock Text="{loc:Loc Shape_SoftEdgeBorderNote}"
+                 Style="{StaticResource GroupFooter}"
+                 Visibility="{Binding ShowSoftEdgeBorderNote, Converter={StaticResource BoolToVisibility}}" />
+    </StackPanel>
+  </controls:SettingsPageFrame>
+  </ScrollViewer>
+</UserControl>

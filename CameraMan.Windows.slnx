@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CameraMan.Windows/CameraMan.Windows.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/CameraMan.Windows.Tests/CameraMan.Windows.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,21 +1,8 @@
-# macOS
-.DS_Store
-
-# Xcode user state
-*.xcuserstate
-xcuserdata/
-
-# Build
-build/
-DerivedData/
-
-
-*.dmg
-# Signing settings for create-dmg.sh
-.env.local
-
-# Personal photo used for the store screenshots
-appstore/screenshots/portrait.jpg
-appstore/screenshots/en/
-appstore/screenshots/pt-BR/
-build-shots/
+bin/
+obj/
+publish/
+.vs/
+.idea/
+TestResults/
+*.user
+*.suo
