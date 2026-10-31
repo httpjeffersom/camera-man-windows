@@ -1,128 +1,147 @@
-# CameraMan for Windows
+# CameraMan para Windows
 
-A floating camera for Windows 11 — put yourself on screen in recordings, demos, classes and calls.
+**[Português](README.md) | [English](README.en.md)**
 
-This repository is a **fork** of [CameraMan for macOS](https://github.com/lucianodiisouza/camera-man-macos) and contains
-the native Windows port: the same product, the same behaviour and the same MIT license, re-implemented in C# with
-WPF and the Windows camera stack. The macOS app remains the upstream project and is not modified here.
+Uma câmera flutuante para o Windows 11 — coloque você mesmo na tela em gravações, demonstrações, aulas e chamadas.
 
-- Windows port: <https://github.com/httpjeffersom/camera-man-windows>
-- macOS original: <https://github.com/lucianodiisouza/camera-man-macos>
+Este repositório é um **fork** do [CameraMan para macOS](https://github.com/lucianodiisouza/camera-man-macos) e contém o
+port nativo para Windows: o mesmo produto, o mesmo comportamento e a mesma licença MIT, reimplementado em C# com WPF e
+a pilha de câmera do Windows. O app para macOS continua sendo o projeto upstream e não é modificado aqui.
 
-## Features
+- Port para Windows: <https://github.com/httpjeffersom/camera-man-windows>
+- Original para macOS: <https://github.com/lucianodiisouza/camera-man-macos>
+- Download: [CameraMan-Windows-1.0.0-win-x64.zip](https://github.com/httpjeffersom/camera-man-windows/releases/download/v1.0.0/CameraMan-Windows-1.0.0-win-x64.zip)
 
-- **Made for recording**: global shortcuts work from any app (`Ctrl+Alt+C` show/hide, `Ctrl+Alt+S` switch size); the
-  floating camera stays above other windows; capture stops completely while the camera is hidden or the session is
-  locked.
-- **Shapes**: circle, organic (five presets, shuffle, optional breathing motion), square, vertical 9:16 and horizontal
-  16:9, with soft edge and per-shape corner radius.
-- **Framing**: move the image inside the shape, zoom, mirror or flip.
-- **Look**: brightness, contrast and saturation on the camera frames; solid or gradient border; soft shadow.
-- **Window**: five sizes, snap to any corner, each size remembers its own place and monitor, `Space` switches between
-  your two favourite sizes.
-- **Settings window** in the style of Windows Settings, with nine pages and search.
-- **Notification-area icon**, optional start at login, English and Brazilian Portuguese.
-- **Private**: no network access, no account, no analytics — video never leaves the machine.
+> **Esta é uma versão inicial do port.** O app funciona, mas ainda podem existir erros de interface, ícones errados ou
+> faltando e outros detalhes a ajustar; eles serão corrigidos aos poucos. Veja
+> [Situação: o que ainda falta](#situação-o-que-ainda-falta).
 
-## Windows port notes
+## Recursos
 
-| macOS | Windows port |
+- **Feito para gravar**: os atalhos globais funcionam de qualquer app (`Ctrl+Alt+C` mostra/oculta, `Ctrl+Alt+S` troca o
+  tamanho); a câmera flutuante fica acima das outras janelas; a captura para completamente enquanto a câmera está oculta
+  ou a sessão está bloqueada.
+- **Formatos**: círculo, orgânico (cinco predefinições, embaralhar, respiração opcional), quadrado, vertical 9:16 e
+  horizontal 16:9, com borda suave e raio de canto por formato.
+- **Enquadramento**: mover a imagem dentro do formato, zoom, espelhar ou inverter.
+- **Aparência**: brilho, contraste e saturação nos quadros da câmera; borda sólida ou em degradê; sombra suave.
+- **Janela**: cinco tamanhos, encaixe em qualquer canto, cada tamanho lembra sua própria posição e monitor, `Espaço`
+  alterna entre seus dois tamanhos favoritos.
+- **Janela de Configurações** no estilo do Windows, com nove páginas e busca.
+- **Ícone na área de notificação**, iniciar com o Windows opcional, inglês e português do Brasil.
+- **Privado**: sem acesso à rede, sem conta, sem analytics — o vídeo nunca sai da máquina.
+
+## Notas do port
+
+| macOS | Port para Windows |
 |---|---|
-| Swift, SwiftUI, AVFoundation | C#, WPF, WinRT `MediaCapture` |
-| ⌃⌥⌘C / ⌃⌥⌘S | `Ctrl+Alt+C` / `Ctrl+Alt+S` (Windows reserves most Win-key chords) |
-| Core Image on the GPU | CPU lookup table + fixed-point saturation |
-| Soft edge blurred outward, window padded | Soft edge feathered inward from the outline (no transparent padding) |
-| Menu bar icon, optional Dock icon | Notification-area icon, no taskbar button |
-| System Settings style | Windows 11 Settings style, native title bar |
+| Swift, SwiftUI, AVFoundation | C#, WPF, `MediaCapture` do WinRT |
+| ⌃⌥⌘C / ⌃⌥⌘S | `Ctrl+Alt+C` / `Ctrl+Alt+S` (o Windows reserva a maioria das combinações com a tecla Windows) |
+| Core Image na GPU | Tabela de consulta na CPU + saturação em ponto fixo |
+| Borda suave borrada para fora, janela com preenchimento | Borda suave esmaecida para dentro a partir do contorno (sem preenchimento transparente) |
+| Ícone na barra de menus, ícone opcional no Dock | Ícone na área de notificação, sem botão na barra de tarefas |
+| Estilo de Ajustes do macOS | Estilo de Configurações do Windows 11, barra de título nativa |
 | `UserDefaults` | `%APPDATA%\CameraMan\settings.json` |
-| App Sandbox + notarization | Plain per-user executable, no installer yet |
+| App Sandbox + notarização | Executável comum por usuário, ainda sem instalador |
 
-The full analysis is in [docs/PORTING_PLAN.md](docs/PORTING_PLAN.md), the API-by-API mapping in
-[docs/WINDOWS_APIS.md](docs/WINDOWS_APIS.md) and the verification matrix in [docs/FEATURE_STATUS.md](docs/FEATURE_STATUS.md).
+A análise completa está em [docs/PORTING_PLAN.md](docs/PORTING_PLAN.md), o mapeamento API por API em
+[docs/WINDOWS_APIS.md](docs/WINDOWS_APIS.md) e a matriz de verificação em
+[docs/FEATURE_STATUS.md](docs/FEATURE_STATUS.md).
 
-## Requirements
+## Requisitos
 
-- Windows 11 (x64). Windows 10 2004+ should work but is not the tested target.
-- A webcam. The app uses the standard Windows camera stack and asks the system for access on first use.
-- To build: .NET SDK 10.0.401 or newer. See [docs/BUILDING.md](docs/BUILDING.md).
-- To run a published copy: nothing else. Self-contained builds include the .NET runtime.
+- Windows 11 (x64). O Windows 10 2004 ou superior deve funcionar, mas não é o alvo testado.
+- Uma webcam. O app usa a pilha de câmera padrão do Windows e pede acesso ao sistema no primeiro uso.
+- Para compilar: .NET SDK 10.0.401 ou superior. Veja [docs/BUILDING.md](docs/BUILDING.md).
+- Para executar uma cópia publicada: nada mais. As builds self-contained incluem o runtime do .NET.
 
-## Quick start
+## Começando
+
+Baixe o zip na [página de releases](https://github.com/httpjeffersom/camera-man-windows/releases/tag/v1.0.0), descompacte
+em qualquer pasta e execute `CameraMan.Windows.exe`. Não há instalador nem necessidade de direitos de administrador;
+como o executável não é assinado, o SmartScreen pode avisar na primeira execução ("Mais informações" → "Executar
+assim mesmo").
+
+A partir do código:
 
 ```powershell
 dotnet build CameraMan.Windows.slnx -c Release
 dotnet run --project src/CameraMan.Windows -c Release
 ```
 
-Or run the published, self-contained build:
+Ou execute a build publicada e self-contained:
 
 ```powershell
 .\publish\win-x64\CameraMan.Windows.exe
 ```
 
-On first launch the camera window appears at the top-left corner of the primary monitor, 400 px wide. The tray icon is
-the way back to the app after you close the camera window.
+Na primeira execução a janela da câmera aparece no canto superior esquerdo do monitor principal, com 400 px de largura.
+O ícone na bandeja é o caminho de volta para o app depois que você fecha a janela da câmera.
 
-## Keyboard
+## Teclado
 
-| Shortcut | Action |
+| Atalho | Ação |
 |---|---|
-| `Ctrl+Alt+C` | Show/hide the camera (global; can be disabled in Settings) |
-| `Ctrl+Alt+S` | Switch to the next size preset (global) |
-| `Ctrl+,` | Open settings (camera window focused, or tray menu) |
-| `Ctrl+Q` | Quit (camera window or tray menu) |
-| Arrows | Move the framing |
-| `+` / `-` / `R` | Zoom in, zoom out, reset |
-| `/` / `V` | Mirror horizontally / vertically |
-| `O` | Next shape |
-| `Backspace` | Next camera |
-| `Space` | Toggle the two favourite sizes |
-| `Ctrl+F` | Search settings |
-| `Esc` | Close settings (when the search box is empty) |
+| `Ctrl+Alt+C` | Mostra/oculta a câmera (global; pode ser desativado nas Configurações) |
+| `Ctrl+Alt+S` | Passa para o próximo tamanho (global) |
+| `Ctrl+,` | Abre as Configurações (com a janela da câmera em foco, ou pelo menu da bandeja) |
+| `Ctrl+Q` | Sai (janela da câmera ou menu da bandeja) |
+| Setas | Movem o enquadramento |
+| `+` / `-` / `R` | Aproxima, afasta, restaura o zoom |
+| `/` / `V` | Espelha na horizontal / na vertical |
+| `O` | Próximo formato |
+| `Backspace` | Próxima câmera |
+| `Espaço` | Alterna entre os dois tamanhos favoritos |
+| `Ctrl+F` | Busca nas Configurações |
+| `Esc` | Fecha as Configurações (quando a caixa de busca está vazia) |
 
-## Where things are stored
+## Onde as coisas ficam
 
-- Settings: `%APPDATA%\CameraMan\settings.json`
-- Error log (only written on unexpected failures, rotated at 256 KB): `%APPDATA%\CameraMan\error.log`
-- Start at login: `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`, value `CameraMan`, written only when you enable
-  the option.
+- Configurações: `%APPDATA%\CameraMan\settings.json`
+- Log de erros (só é escrito em falhas inesperadas, rotacionado em 256 KB): `%APPDATA%\CameraMan\error.log`
+- Iniciar com o Windows: `HKCU\Software\Microsoft\Windows\CurrentVersion\Run`, valor `CameraMan`, escrito apenas quando
+  você ativa a opção.
 
-Camera frames exist only in memory. They are never written to disk or sent over the network, and the project contains
-no networking or media-encoding code.
+Os quadros da câmera existem apenas na memória. Nunca são gravados em disco nem enviados pela rede, e o projeto não
+contém código de rede ou de codificação de mídia.
 
-## Status: what still needs work
+## Situação: o que ainda falta
 
-The port builds cleanly and the automated suite passes, but it is **not finished**. Known gaps and open items:
+O port compila sem avisos e a suíte automatizada passa, mas ele **não está pronto**. Lacunas e pendências conhecidas:
 
-- **Manual verification is incomplete.** Live preview, formats, shapes, borders, shadows, soft edge, tray, global
-  shortcuts and settings persistence were exercised on real hardware. Multi-monitor with mixed DPI, lock/sleep
-  resume, per-preset position restore across launches, camera switching by `Backspace`, zoom/pan/mirror by keyboard and
-  "restore defaults" still need a hands-on pass. The matrix in [docs/FEATURE_STATUS.md](docs/FEATURE_STATUS.md) marks
-  each item as *Verified*, *Implemented* or *Adapted*.
-- **Search finds settings but does not scroll to them.** Clicking a result opens the page; the matching row is not
-  highlighted.
-- **No installer or code signing.** The published folder is portable and unsigned, so SmartScreen warns on first run.
-- **Topmost has limits.** A normal topmost window cannot cover exclusive-fullscreen DirectX apps; borderless
-  fullscreen works.
-- **macOS video effects are absent.** Portrait, Studio Light and background replacement are system features with no
-  stable public Windows equivalent; the app explains them but does not simulate them.
-- **Soft edge fades inward only**, so the visible silhouette is slightly tighter than on macOS (which blurs outward
-  into transparent padding).
-- **Colour correction runs on the CPU**, which costs more than Core Image but keeps the app dependency-free.
-- **Language changes need a restart.**
-- **No separate shadow opacity control**; the shadow colour keeps its alpha (the default is 50 % black).
-- **Notifications and updates**: there is no update check and no toast outside the app's own overlay.
+- **Interface e ícones.** Algumas telas, espaçamentos e ícones ainda diferem do app para macOS ou do próprio Windows 11,
+  e alguns textos podem soar estranhos. Isso será corrigido aos poucos.
+- **A verificação manual está incompleta.** Prévia ao vivo, formatos, formas, bordas, sombras, borda suave, bandeja,
+  atalhos globais e persistência das configurações foram exercitados em hardware real. Multi-monitor com DPI misto,
+  retomada após bloqueio/suspensão, restauração da posição por predefinição entre reinícios, troca de câmera com
+  `Backspace`, zoom/pan/espelhamento pelo teclado e "restaurar padrões" ainda precisam de um teste manual. A matriz em
+  [docs/FEATURE_STATUS.md](docs/FEATURE_STATUS.md) marca cada item como *Verified*, *Implemented* ou *Adapted*.
+- **A busca encontra as configurações, mas não rola até elas.** Clicar em um resultado abre a página; a linha
+  correspondente não é destacada.
+- **Sem instalador e sem assinatura de código.** A pasta publicada é portátil e não assinada, então o SmartScreen avisa
+  na primeira execução.
+- **O topmost tem limites.** Uma janela topmost normal não consegue cobrir apps DirectX em tela cheia exclusiva; tela
+  cheia sem bordas funciona.
+- **Os efeitos de vídeo do macOS não existem.** Retrato, Luz de Estúdio e substituição de fundo são recursos do sistema
+  sem equivalente público estável no Windows; o app os explica, mas não os simula.
+- **A borda suave esmaece só para dentro**, então a silhueta visível fica um pouco mais estreita que no macOS (que borra
+  para fora, em preenchimento transparente).
+- **A correção de cor roda na CPU**, o que custa mais que o Core Image, mas mantém o app sem dependências.
+- **Mudar o idioma exige reiniciar o app.**
+- **Não há controle separado de opacidade da sombra**; a cor da sombra mantém seu alfa (o padrão é 50 % de preto).
+- **Notificações e atualizações**: não há verificação de atualização nem notificação fora da sobreposição do próprio app.
 
-## Privacy and security
+## Privacidade e segurança
 
-CameraMan has no networking code at all: no HTTP client, no sockets, no telemetry, no accounts. The camera stream is
-read frame by frame into a reusable buffer and drawn; it is never encoded or saved. The only files touched are the
-settings/log in `%APPDATA%` and the per-user Run key when you enable start at login. The app runs as the current user
-(`asInvoker`) and never requests administrator rights. See [PRIVACY.md](PRIVACY.md) and [SECURITY.md](SECURITY.md).
+O CameraMan não tem nenhum código de rede: sem cliente HTTP, sem sockets, sem telemetria, sem contas. O fluxo da câmera
+é lido quadro a quadro em um buffer reutilizável e desenhado; nunca é codificado ou salvo. Os únicos arquivos tocados são
+as configurações/log em `%APPDATA%` e a chave Run do usuário quando você ativa iniciar com o Windows. O app roda como o
+usuário atual (`asInvoker`) e nunca pede direitos de administrador. Veja [PRIVACY.md](PRIVACY.md) e
+[SECURITY.md](SECURITY.md).
 
-## Build from source
+## Compilar do código
 
-Requirements: Windows 11 x64, .NET SDK 10, a camera for the manual test.
+Requisitos: Windows 11 x64, .NET SDK 10 e uma câmera para o teste manual.
 
 ```powershell
 dotnet build CameraMan.Windows.slnx -c Release
@@ -130,25 +149,25 @@ dotnet test CameraMan.Windows.slnx -c Release
 dotnet publish src\CameraMan.Windows\CameraMan.Windows.csproj -c Release -r win-x64 --self-contained true -o publish\win-x64
 ```
 
-No Visual Studio workload, Windows App SDK, DirectX SDK or Node.js is required. See
-[docs/BUILDING.md](docs/BUILDING.md) for prerequisites, the manual test checklist and troubleshooting.
+Não é necessário workload do Visual Studio, Windows App SDK, DirectX SDK ou Node.js. Veja
+[docs/BUILDING.md](docs/BUILDING.md) para pré-requisitos, o checklist de teste manual e solução de problemas.
 
-## Localization
+## Idiomas
 
-English and Brazilian Portuguese. The language picker is in Settings → General; the choice applies on the next
-launch. "System" follows the installed Windows UI language.
+Inglês e português do Brasil. O seletor de idioma fica em Configurações → Geral; a escolha vale na próxima execução.
+"Sistema" segue o idioma da interface do Windows instalado.
 
-## Contributing
+## Contribuindo
 
-Contributions are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for the development setup and
-[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for community standards. Security issues: [SECURITY.md](SECURITY.md).
+Contribuições são bem-vindas. Veja [CONTRIBUTING.md](CONTRIBUTING.md) para o ambiente de desenvolvimento e
+[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) para as regras da comunidade. Problemas de segurança: [SECURITY.md](SECURITY.md).
 
-## Changelog
+## Histórico de versões
 
-See [CHANGELOG.md](CHANGELOG.md) for version history.
+Veja [CHANGELOG.md](CHANGELOG.md).
 
-## License
+## Licença
 
-MIT. The original macOS project is Copyright (c) 2025 Camera-Man Contributors; this port adds
-Copyright (c) 2026 CameraMan.Windows contributors. See [LICENSE](LICENSE) and
+MIT. O projeto original para macOS é Copyright (c) 2025 Camera-Man Contributors; este port acrescenta
+Copyright (c) 2026 CameraMan.Windows contributors. Veja [LICENSE](LICENSE) e
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
