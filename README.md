@@ -8,7 +8,7 @@ Este repositório é um **fork** do [CameraMan para macOS](https://github.com/lu
 port nativo para Windows: o mesmo produto, o mesmo comportamento e a mesma licença MIT, reimplementado em C# com WPF e
 a pilha de câmera do Windows. O app para macOS continua sendo o projeto upstream e não é modificado aqui.
 
-- Port para Windows: <https://github.com/httpjeffersom/camera-man-windows>
+
 - Original para macOS: <https://github.com/lucianodiisouza/camera-man-macos>
 - Download: [CameraMan-Windows-1.0.0-win-x64.zip](https://github.com/httpjeffersom/camera-man-windows/releases/download/v1.0.0/CameraMan-Windows-1.0.0-win-x64.zip)
 
